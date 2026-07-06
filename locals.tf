@@ -7,7 +7,7 @@ locals {
     backend_alb_listener_arn = data.aws_ssm_parameter.backend_alb_listener_arn.value
     frontend_alb_listener_arn = data.aws_ssm_parameter.frontend_alb_listener_arn.value
     alb_listener_arn = var.component == "frontend" ? local.frontend_alb_listener_arn : local.backend_alb_listener_arn
-    host_header = var.component == "frontend" ? "${var.project}-${var.environment}-${var.domain.name}" : "${var.component}.backend-alb-${var.environment}.${var.domain.name}"
+    host_header = var.component == "frontend" ? "${var.project}-${var.environment}-${var.domain_name}" : "${var.component}.backend-alb-${var.environment}.${var.domain.name}"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     common_tags = {
         Project = "${var.project}"
